@@ -33,7 +33,7 @@ const store = registerStore()
 document.title = systemConfig.PGIS_SYSCONFIG.system.title
 
 const rootContainer = (
-  <Provider {...{ store }}>
+  <Provider store={store}>
     <ConfigProvider locale={zhCN}>
       <RootRouter />
     </ConfigProvider>

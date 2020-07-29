@@ -10,13 +10,17 @@
 
 import asyncComponent from '@/common/tool/asyncComponent' // 异步加载
 import systemConfig from '@/config/systemConfig'
-
 const Router = [
   {
     name: '首页',
     path: `${systemConfig.PGIS_SYSCONFIG.system.publicPath || '/'}`,
     exact: true,
     component: asyncComponent(() => import('@/container/Index/Index'))
+  },
+  {
+    name: '首页1',
+    path: '/handle',
+    component: asyncComponent(() => import('@/container/handle'))
   }
 ]
 

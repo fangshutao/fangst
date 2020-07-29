@@ -37,20 +37,22 @@ export default function registerStore() {
    * 启动
    */
   function run() {
-    // 1.create store
-    const store = create({
-      appReducer: { ...createReducers() },
-      appMiddleware: [sagaMiddleware]
-    })
-    app.store = store
-    // 2.start effect
-    sagaMiddleware.run(createEffects())
-
+    const createReducer = createReducers() // 创建Reducers对象集合
+    const store = create(createReducer) // 创建Store
+    sagaMiddleware.run(createEffects()) // 启动saga
     return store
   }
 
   /**
-   * 创建Reducers
+   * 创建Store
+   * @param appReducer
+   */
+  function create(appReducer) {
+    return createStore(combineReducers(appReducer), composeWithDevTools(applyMiddleware(sagaMiddleware)))
+  }
+
+  /**
+   * 创建Reducers对象集合
    */
   function createReducers() {
     return app._models.reduce((acc, model) => {
@@ -67,9 +69,8 @@ export default function registerStore() {
    */
   function createReducerFunc(model) {
     const { nameSpace, reducers } = model
-    const initState = model.state
-    // redux reducer
     if (reducers) {
+      const initState = model.state
       const reducerFunMap = Object.keys(reducers).reduce((acc, reducerKey) => {
         acc[`${nameSpace}${NAMESPACE_SEP}${reducerKey}`] = reducers[reducerKey]
         return acc
@@ -88,17 +89,15 @@ export default function registerStore() {
    * 创建副作用effect
    */
   function createEffects() {
-    app._models.forEach(model => {
+    app._models.map(model => {
       const { nameSpace, effects } = model
       if (effects) {
         _effects.push(
           ...Object.keys(effects).map(effectKey => {
             return function* () {
               try {
-                while (true) {
-                  const action = yield sagaEffects.take(`${nameSpace}${NAMESPACE_SEP}${effectKey}`)
-                  yield* effects[effectKey](action, sagaEffects)
-                }
+                yield sagaEffects.take(`${nameSpace}${NAMESPACE_SEP}${effectKey}`)
+                yield* effects[effectKey](sagaEffects)
               } catch (e) {
                 console.log(e)
               }
@@ -108,20 +107,7 @@ export default function registerStore() {
       }
     })
     return function* rootSaga() {
-      function* sagaStart() {
-        console.log(`Hello ${environment} Saga, Start!`)
-      }
-      yield sagaEffects.all(_effects.concat(sagaStart).map(sagaEffects.fork))
+      yield sagaEffects.all(_effects.map(sagaEffects.fork))
     }
-  }
-
-  /**
-   * 创建Store
-   * @param appReducer
-   * @param appMiddleware
-   */
-  function create({ appReducer, appMiddleware }) {
-    // return createStore(combineReducers(appReducer), compose(composeWithDevTools(), applyMiddleware(...appMiddleware)))
-    return createStore(combineReducers(appReducer), composeWithDevTools(applyMiddleware(...appMiddleware)))
   }
 }

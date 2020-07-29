@@ -1,5 +1,5 @@
 {
-  "name": "Reaper",
+  "name": "web",
   "version": "1.0.0",
   "description": "Reaper Cli JS",
   "keywords": [
@@ -91,7 +91,7 @@
     "webpack-merge": "^4.2.2"
   },
   "scripts": {
-    "server": "cross-env NODE_ENV=dev node server.js",
+    "dev": "cross-env NODE_ENV=dev node server.js",
     "build": "cross-env NODE_ENV=prod webpack --config webpack.config/webpack.prod.js --progress --color",
     "lint": "eslint --fix './src/**/*.{js,json}'",
     "fix": "prettier --write ./src"
