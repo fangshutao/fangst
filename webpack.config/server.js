@@ -8,11 +8,9 @@ const webpackDevMiddleware = require('webpack-dev-middleware')
 const webpackHotMiddleware = require('webpack-hot-middleware')
 const portfinder = require('portfinder')
 const app = express()
-const config = require('./webpack.config/webpack.dev.js')
+const config = require('./webpack.dev.js')
 const compiler = webpack(config)
 compiler.apply(new webpack.ProgressPlugin()) // 进度显示
-
-const publicPath = '/' // 系统相对服务路径 默认为空
 
 /**
  * 获取本机IP
@@ -50,7 +48,7 @@ app.use(
 )
 
 app.get('*', (req, res, next) => {
-  const filename = path.join(__dirname, './dist', 'index.html')
+  const filename = path.join(__dirname, '../dist', 'index.html')
   compiler.outputFileSystem.readFile(filename, (err, result) => {
     if (err) {
       return next(err)
@@ -75,7 +73,10 @@ const setPortListen = async () => {
       return 8081
     })
   app.listen(port, function () {
-    const address = [`http://localhost:${port}${publicPath}`, `http://${getIPAddress()}:${port}${publicPath}`]
+    const address = [
+      `http://localhost:${port}${config.output.publicPath}`,
+      `http://${getIPAddress()}:${port}${config.output.publicPath}`
+    ]
     console.log('app listening on the following address:')
     console.log(`${address[0]}!`)
     console.log(`${address[1]}!`)

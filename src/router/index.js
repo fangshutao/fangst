@@ -13,7 +13,7 @@ import router from './config/router' // 路由
 const routes = [...router] // 路由合并
 const RouterComponent = () => <Switch>{renderRoutes(routes)}</Switch>
 const RootRouter = () => (
-  <BrowserRouter>
+  <BrowserRouter basename={publicPath || '/'}>
     <RouterComponent />
   </BrowserRouter>
 )

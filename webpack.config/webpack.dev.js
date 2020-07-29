@@ -9,11 +9,12 @@ const path = require('path')
 const merge = require('webpack-merge')
 const base = require('./webpack.base')
 const env = require('./env/dev')
+const commonEnv = require('./env/commonEnv')
 
 const outputPath = path.resolve(__dirname, '../dist')
 
 module.exports = merge(base(), {
-  plugins: [new webpack.DefinePlugin(env)],
+  plugins: [new webpack.DefinePlugin({ ...env, ...commonEnv })],
   // 开发环境服务器(WDS) 如果使用了webpack-dev-middleware 则webpack不会读取该项配置
   devServer: {
     contentBase: outputPath,

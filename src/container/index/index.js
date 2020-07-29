@@ -11,7 +11,7 @@ import { compose } from 'redux'
 import { connect, useSelector, useDispatch } from 'react-redux'
 import { withRouter } from 'react-router'
 import PropTypes from 'prop-types'
-import './Index.less'
+import './index.less'
 import { getOrgInfoByOrgCode, getApiMock } from '@/services/global'
 
 function Index(props) {

@@ -11,10 +11,8 @@ const plugins = require('./common/plugins')
 
 // 简化了HTML文件的创建，以便为你的webpack包提供服务
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-const baseEntry = path.resolve(__dirname, '../index.js')
-
-const publicPath = '/' // 系统相对服务路径 默认为 /
-
+const baseEntry = path.resolve(__dirname, '../src/main.js')
+const { publicPath } = require('./env/commonEnv')
 module.exports = () => {
   return {
     mode: process.env.NODE_ENV === 'dev' ? 'development' : 'production', // 配置webpack构建模式(development production)
@@ -30,7 +28,7 @@ module.exports = () => {
       path: path.resolve(__dirname, '../dist'),
       filename: './static/js/[name]_[hash:16].js',
       chunkFilename: './static/js/chunk/chunk-[name]-[id].[chunkhash:8].bundle.js',
-      publicPath: `${publicPath === '/' ? publicPath : `${publicPath}/`}`
+      publicPath: JSON.parse(publicPath)
     }, // 输出构建
     // module 关于模块配置
     module: {
@@ -38,14 +36,12 @@ module.exports = () => {
     },
     plugins: plugins().concat([
       new HtmlWebpackPlugin({
-        template: path.resolve(__dirname, '../index.ejs'),
+        template: path.resolve(__dirname, '../src/index.html'),
         filename: 'index.html',
         chunks: ['main', 'vendor', 'commons'],
         inject: true,
         minify: false,
-        chunksSortMode: 'none', // 如果使用webpack4将该配置项设置为'none'
-        title: 'Reaper',
-        systemConfig: `${publicPath === '/' ? publicPath : `${publicPath}/`}config/systemConfig.js` // 系统配置文件
+        chunksSortMode: 'none' // 如果使用webpack4将该配置项设置为'none'
       })
     ]),
     optimization: optimization(),

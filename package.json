@@ -91,7 +91,7 @@
     "webpack-merge": "^4.2.2"
   },
   "scripts": {
-    "dev": "cross-env NODE_ENV=dev node server.js",
+    "dev": "cross-env NODE_ENV=dev node webpack.config/server.js",
     "build": "cross-env NODE_ENV=prod webpack --config webpack.config/webpack.prod.js --progress --color",
     "lint": "eslint --fix './src/**/*.{js,json}'",
     "fix": "prettier --write ./src"
