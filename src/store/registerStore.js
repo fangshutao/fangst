@@ -96,8 +96,8 @@ export default function registerStore() {
           ...Object.keys(effects).map(effectKey => {
             return function* () {
               try {
-                yield sagaEffects.take(`${nameSpace}${NAMESPACE_SEP}${effectKey}`)
-                yield* effects[effectKey](sagaEffects)
+                const action = yield sagaEffects.take(`${nameSpace}${NAMESPACE_SEP}${effectKey}`)
+                yield* effects[effectKey](action, sagaEffects)
               } catch (e) {
                 console.log(e)
               }

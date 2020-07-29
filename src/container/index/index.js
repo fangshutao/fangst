@@ -37,7 +37,7 @@ function Index(props) {
     <main className="main">
       <div className="universe animate__animated animate__fadeIn" />
       <h1 className="animate__animated animate__fadeIn" onClick={() => onHEvent()}>
-        欢迎来到方正前端组，你的一言一行都在影响着他人，所以~~加油！
+        欢迎来到方正前端组，你的一言一行都在影响着他人
       </h1>
       <p>{`${systemReady}`}</p>
       <ChildCom />

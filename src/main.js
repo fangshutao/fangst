@@ -3,7 +3,6 @@
  * Created by weiChow on 2020/06/30
  * React、ReactDOM、RootRouter、Redux
  */
-
 import React from 'react'
 import ReactDOM from 'react-dom'
 import RootRouter from '@/router/index' // 路由入口
@@ -15,7 +14,7 @@ import zhCN from 'antd/es/locale/zh_CN' // 国际化(中文)
 import registerStore from '@/store/registerStore'
 
 if (environment === 'dev') {
-  require('@/mock/index')
+  require('./common/mock/index')
 }
 if (module.hot) {
   module.hot.accept()

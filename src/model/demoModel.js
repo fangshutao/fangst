@@ -12,7 +12,7 @@ export default {
   },
 
   effects: {
-    *setCount({ put, call }) {
+    *setCount(action, { put, call }) {
       yield put({
         type: 'demoModel/getCount',
         payload: {

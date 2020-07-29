@@ -8,12 +8,12 @@ export default {
   nameSpace: 'global',
 
   state: {
-    systemReady: false, // 系统初始化完毕
+    systemReady: '测试', // 系统初始化完毕
     systemReady1: 1
   },
 
   effects: {
-    *setSystemReady({ put, call }) {
+    *setSystemReady(action, { put, call }) {
       yield call(
         () =>
           new Promise(resolve => {
@@ -25,7 +25,7 @@ export default {
       yield put({
         type: 'global/save',
         payload: {
-          systemReady: true
+          systemReady: '测试一下'
         }
       })
     }
