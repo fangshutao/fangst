@@ -4,22 +4,20 @@
  * global service
  */
 
-import { request } from './http'
-
+import { http } from './http'
 /**
  * 通过组织机构代码获取组织机构信息
- * @param orgCode
  * @returns {Promise}
  */
-export function getOrgInfoByOrgCode(orgCode) {
-  return request('http://171.220.244.49:8883/metaData/getOrgInfoByOrgCode', {
+export function getOrgInfoByOrgCode(data) {
+  return http('http://171.220.244.49:8883/metaData/getOrgInfoByOrgCode', {
     method: 'get',
-    data: { orgCode }
+    data
   })
 }
 
-export function getApiMock() {
-  return request('/api/global', {
+export const getApiMock = () => {
+  return http('/api/global', {
     method: 'get'
   })
 }
