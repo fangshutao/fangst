@@ -11,13 +11,7 @@
 import asyncComponent from '@/common/tool/asyncComponent' // 异步加载
 const Router = [
   {
-    name: '首页',
-    path: '/',
-    exact: true,
-    component: asyncComponent(() => import('@/container/index/Index'))
-  },
-  {
-    name: '首页1',
+    name: 'handle',
     path: '/handle',
     component: asyncComponent(() => import('@/container/handle'))
   }

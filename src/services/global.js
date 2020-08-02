@@ -4,7 +4,8 @@
  * global service
  */
 
-import { http } from './http'
+import { http } from '@/common/http/http'
+
 /**
  * 通过组织机构代码获取组织机构信息
  * @returns {Promise}

@@ -22,7 +22,6 @@ axiosHttp.interceptors.request.use(
 axiosHttp.interceptors.response.use(
   response => response,
   error => {
-    console.log(error)
     if (error?.response) {
       switch (error.response.status) {
         case 400:
@@ -64,8 +63,6 @@ axiosHttp.interceptors.response.use(
         default:
           console.log(`连接错误${error.response.status}`)
       }
-    } else {
-      console.log('连接到服务器失败')
     }
     return Promise.reject(error.response)
   }

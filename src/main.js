@@ -11,7 +11,7 @@ import 'animate.css' // 动画效果
 import './main.less' // 主框架样式
 import { ConfigProvider } from 'antd'
 import zhCN from 'antd/es/locale/zh_CN' // 国际化(中文)
-import registerStore from '@/store/registerStore'
+import registerStore from '@/common/store/registerStore'
 
 if (environment === 'dev') {
   require('./common/mock/index')

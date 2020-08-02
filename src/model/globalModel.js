@@ -8,8 +8,7 @@ export default {
   nameSpace: 'global',
 
   state: {
-    systemReady: '测试', // 系统初始化完毕
-    systemReady1: 1
+    systemReady: '测试'
   },
 
   effects: {
