@@ -29,7 +29,7 @@ function Index() {
     history.push('/handle')
   }
   return (
-    <main className="main">
+    <main className="index">
       <div className="universe animate__animated animate__fadeIn" />
       <h1 className="animate__animated animate__fadeIn" onClick={() => onHEvent()}>
         欢迎来到方正前端组，你的一言一行都在影响着他人

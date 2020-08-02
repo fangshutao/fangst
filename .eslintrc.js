@@ -17,7 +17,8 @@ module.exports = {
   },
   rules: {
     'react/no-string-refs': 'off',
-    'no-debugger': 'off'
+    'no-debugger': 'off',
+    'react/prop-types': 'off'
   },
   // extends eslint config
   extends: [
