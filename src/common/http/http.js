@@ -139,7 +139,7 @@ const get = (url, option) => {
  */
 const post = (url, option) => {
   const promise = new Promise((resolve, reject) => {
-    axiosHttp.post(url, option).then(
+    axiosHttp.post(url, option.data).then(
       response => {
         resolve(response.data)
       },
@@ -157,7 +157,7 @@ const post = (url, option) => {
  */
 const patch = (url, option) => {
   const promise = new Promise((resolve, reject) => {
-    axiosHttp.patch(url, option).then(
+    axiosHttp.patch(url, option.data).then(
       response => {
         resolve(response.data)
       },
@@ -176,7 +176,7 @@ const patch = (url, option) => {
  */
 const put = (url, option) => {
   const promise = new Promise((resolve, reject) => {
-    axiosHttp.put(url, option).then(
+    axiosHttp.put(url, option.data).then(
       response => {
         resolve(response.data)
       },
