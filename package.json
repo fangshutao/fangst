@@ -1,7 +1,7 @@
 {
   "name": "web",
   "version": "1.0.0",
-  "description": "Reaper Cli JS",
+  "description": "Web Cli JS",
   "keywords": [
     "Reaper",
     "React",
@@ -9,7 +9,7 @@
     "antd",
     "Cli"
   ],
-  "main": "index.js",
+  "main": "main.js",
   "author": "weiChow <w_zhou@founder.com.cn>",
   "license": "MIT",
   "dependencies": {
