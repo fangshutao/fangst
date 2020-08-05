@@ -5,5 +5,5 @@
  */
 
 module.exports = {
-  publicPath: JSON.stringify('/') // 配置目录访问地址
+  publicPath: JSON.stringify('/tets/') // 配置多级目录访问地址
 }

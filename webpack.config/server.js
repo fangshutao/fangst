@@ -4,6 +4,7 @@ const os = require('os')
 const open = require('open')
 const express = require('express')
 const webpack = require('webpack')
+// const request = require('request')
 const webpackDevMiddleware = require('webpack-dev-middleware')
 const webpackHotMiddleware = require('webpack-hot-middleware')
 const portfinder = require('portfinder')
@@ -11,6 +12,8 @@ const app = express()
 const config = require('./webpack.dev.js')
 const compiler = webpack(config)
 compiler.apply(new webpack.ProgressPlugin()) // 进度显示
+const { publicPath } = require('./env/commonEnv') // 获取公共配置
+const publicPathName = JSON.parse(publicPath)
 
 /**
  * 获取本机IP
@@ -30,7 +33,7 @@ function getIPAddress() {
 
 app.use(
   webpackDevMiddleware(compiler, {
-    publicPath: config.output.publicPath,
+    publicPath: publicPathName,
     noInfo: true,
     stats: {
       colors: true,
@@ -73,10 +76,11 @@ const setPortListen = async () => {
       return 8081
     })
   app.listen(port, function () {
-    const address = [
-      `http://localhost:${port}${config.output.publicPath}`,
-      `http://${getIPAddress()}:${port}${config.output.publicPath}`
-    ]
+    const address = [`http://localhost:${port}${publicPathName}`, `http://${getIPAddress()}:${port}${publicPathName}`]
+    // const publicPath = publicPathName.replace(/[/]/g, '')
+    // request({
+    //   url: `http://192.168.1.38:8000/registerConsulweb?serviceName=${publicPath}&ip=${getIPAddress()}&serverport=${port}`
+    // })
     console.log('app listening on the following address:')
     console.log(`${address[0]}!`)
     console.log(`${address[1]}!`)
