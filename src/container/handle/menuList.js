@@ -40,7 +40,8 @@ export const MenuList = [
     icon: <DatabaseOutlined />,
     content: () => {
       return '功能3'
-    }
+    },
+    route: '/handle/demo3'
   },
   {
     name: '功能4',
