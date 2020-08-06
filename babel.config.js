@@ -1,7 +1,7 @@
-'use strict'
+'use strict';
 
 module.exports = function (babel) {
-  babel.cache(true)
+  babel.cache(true);
 
   const presets = [
     [
@@ -11,7 +11,7 @@ module.exports = function (babel) {
       }
     ],
     '@babel/preset-react'
-  ]
+  ];
 
   const plugins = [
     [
@@ -51,10 +51,10 @@ module.exports = function (babel) {
     '@babel/plugin-proposal-do-expressions',
     '@babel/plugin-transform-exponentiation-operator',
     'react-hot-loader/babel'
-  ]
+  ];
 
   return {
     presets,
     plugins
-  }
-}
+  };
+};

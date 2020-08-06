@@ -1,8 +1,8 @@
-'use strict'
+'use strict';
 /**
  * Created by weiChow on 2020/06/30.
  */
-import asyncComponent from '@/common/tool/asyncComponent' // 异步加载
+import asyncComponent from '@/common/tool/asyncComponent'; // 异步加载
 const Router = [
   {
     name: 'handle',
@@ -26,6 +26,6 @@ const Router = [
       }
     ]
   }
-]
+];
 
-export default Router
+export default Router;

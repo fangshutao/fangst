@@ -1,17 +1,17 @@
-'use strict'
+'use strict';
 /**
  * Created by weiChow on 2020/06/30
  * 生产时构建
  */
 
-const webpack = require('webpack')
-const merge = require('webpack-merge')
+const webpack = require('webpack');
+const merge = require('webpack-merge');
 // 压缩JS文件(webpack在构建时内置了该插件 如果需要对该插件进行配置 就需要安装)
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
-const env = require('./env/prod')
-const commonEnv = require('./env/commonEnv')
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const env = require('./env/prod');
+const commonEnv = require('./env/commonEnv');
 
-const base = require('./webpack.base')
+const base = require('./webpack.base');
 
 module.exports = merge(base(), {
   plugins: [new webpack.DefinePlugin({ ...env, ...commonEnv })],
@@ -26,4 +26,4 @@ module.exports = merge(base(), {
     ]
   },
   devtool: 'source-map'
-})
+});

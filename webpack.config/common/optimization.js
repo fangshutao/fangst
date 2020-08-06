@@ -1,4 +1,4 @@
-'use strict'
+'use strict';
 /**
  * Created by weiChow on 2020/06/30
  * optimization
@@ -20,5 +20,5 @@ module.exports = () => {
         }
       }
     }
-  }
-}
+  };
+};

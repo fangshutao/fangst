@@ -29,4 +29,4 @@ module.exports = {
     'prettier/react',
     'prettier/standard'
   ]
-}
+};

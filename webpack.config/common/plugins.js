@@ -1,17 +1,17 @@
-'use strict'
+'use strict';
 /**
  * Created by weiChow on 2020/06/30
  * plugins
  */
 
-const path = require('path')
-const webpack = require('webpack')
-const CopyPlugin = require('copy-webpack-plugin')
-const { CleanWebpackPlugin } = require('clean-webpack-plugin') // 每次构建前清理webpack配置的output目录，这样只会生成用到的文件
-const MiniCssExtractPlugin = require('mini-css-extract-plugin') // 将CSS提取到单独的文件中 它为每个包含CSS的JS文件创建一个CSS文件 它支持CSS和SourceMap的按需加载
-const OptimizeCssAssetsWebpackPlugin = require('optimize-css-assets-webpack-plugin') // 压缩CSS文件
-const CompressionPlugin = require('compression-webpack-plugin') // 压缩资源
-const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer') // 可视化构建分析
+const path = require('path');
+const webpack = require('webpack');
+const CopyPlugin = require('copy-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin'); // 每次构建前清理webpack配置的output目录，这样只会生成用到的文件
+const MiniCssExtractPlugin = require('mini-css-extract-plugin'); // 将CSS提取到单独的文件中 它为每个包含CSS的JS文件创建一个CSS文件 它支持CSS和SourceMap的按需加载
+const OptimizeCssAssetsWebpackPlugin = require('optimize-css-assets-webpack-plugin'); // 压缩CSS文件
+const CompressionPlugin = require('compression-webpack-plugin'); // 压缩资源
+const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer'); // 可视化构建分析
 
 module.exports = () => {
   const modePlugins = [
@@ -41,11 +41,11 @@ module.exports = () => {
       threshold: 10240, // 只处理比这个值大的资源。按字节计算
       minRatio: 0.8 // 只有压缩率比这个值小的资源才会被处理
     })
-  ]
+  ];
   if (process.env.NODE_ENV === 'dev') {
     modePlugins.push(
       new webpack.HotModuleReplacementPlugin() // HMR 热替换模块 开发模式搭配WDS WDM使用
-    )
+    );
   } else {
     modePlugins.push(
       new CleanWebpackPlugin({
@@ -59,7 +59,7 @@ module.exports = () => {
         filename: './static/css/[name]-[id].[chunkhash:8].bundle.css' // 指定打包后的css
       }), // 用来抽离css文件 不用打包到js文件里
       new BundleAnalyzerPlugin()
-    )
+    );
   }
-  return [].concat(modePlugins)
-}
+  return [].concat(modePlugins);
+};

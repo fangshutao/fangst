@@ -5,4 +5,4 @@ window.PGIS_SYSCONFIG = {
   system: {
     title: '前端' // 系统名
   }
-}
+};

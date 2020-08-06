@@ -1,4 +1,4 @@
-'use strict'
+'use strict';
 /**
  * Created by weiChow on 2020/07/13
  * global model
@@ -18,13 +18,13 @@ export default {
         payload: {
           count: 1
         }
-      })
+      });
     }
   },
 
   reducers: {
     getCount(state, action) {
-      return { ...state, ...action.payload }
+      return { ...state, ...action.payload };
     }
   }
-}
+};

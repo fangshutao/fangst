@@ -1,13 +1,13 @@
-'use strict'
+'use strict';
 /**
  * Created by weiChow on 2020/07/28
  * mock
  */
-const Mock = require('mockjs')
+const Mock = require('mockjs');
 
 Mock.setup({
   timeout: 2000
-})
+});
 const data = Mock.mock({
   'data|3': [
     {
@@ -21,7 +21,7 @@ const data = Mock.mock({
       email: '@email()' // 邮箱
     }
   ]
-})
+});
 Mock.mock('/api/global', 'get', config => {
-  return data
-})
+  return data;
+});

@@ -1,18 +1,18 @@
-'use strict'
+'use strict';
 /**
  * Created by weiChow on 2020/06/30
  * webpack基础配置
  */
 
-const path = require('path')
-const rules = require('./common/Rules')
-const optimization = require('./common/optimization')
-const plugins = require('./common/plugins')
+const path = require('path');
+const rules = require('./common/Rules');
+const optimization = require('./common/optimization');
+const plugins = require('./common/plugins');
 
 // 简化了HTML文件的创建，以便为你的webpack包提供服务
-const HtmlWebpackPlugin = require('html-webpack-plugin')
-const baseEntry = path.resolve(__dirname, '../src/main.js')
-const { publicPath } = require('./env/commonEnv')
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const baseEntry = path.resolve(__dirname, '../src/main.js');
+const { publicPath } = require('./env/commonEnv');
 module.exports = () => {
   return {
     mode: process.env.NODE_ENV === 'dev' ? 'development' : 'production', // 配置webpack构建模式(development production)
@@ -55,5 +55,5 @@ module.exports = () => {
         static: path.join(__dirname, '..', '/src/static') // 指向静态资源目录
       }
     }
-  }
-}
+  };
+};

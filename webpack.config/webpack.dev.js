@@ -1,17 +1,17 @@
-'use strict'
+'use strict';
 /**
  * Created by weiChow on 2020/06/30
  * 开发时构建
  */
 
-const webpack = require('webpack')
-const path = require('path')
-const merge = require('webpack-merge')
-const base = require('./webpack.base')
-const env = require('./env/dev')
-const commonEnv = require('./env/commonEnv')
+const webpack = require('webpack');
+const path = require('path');
+const merge = require('webpack-merge');
+const base = require('./webpack.base');
+const env = require('./env/dev');
+const commonEnv = require('./env/commonEnv');
 
-const outputPath = path.resolve(__dirname, '../dist')
+const outputPath = path.resolve(__dirname, '../dist');
 
 module.exports = merge(base(), {
   plugins: [new webpack.DefinePlugin({ ...env, ...commonEnv })],
@@ -25,4 +25,4 @@ module.exports = merge(base(), {
     https: false // 可开启https
   },
   devtool: 'source-map'
-})
+});
