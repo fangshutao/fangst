@@ -20,53 +20,35 @@ export const MenuList = [
     name: '功能1',
     id: 'menu-1',
     icon: <PieChartOutlined />,
-    content: () => {
-      return 'demo1';
-    },
     route: '/handle/demo1'
   },
   {
     name: '功能2',
     id: 'menu-2',
     icon: <AppstoreAddOutlined />,
-    content: () => {
-      return 'demo2';
-    },
     route: '/handle/demo2'
   },
   {
     name: '功能3',
     id: 'menu-3',
     icon: <DatabaseOutlined />,
-    content: () => {
-      return 'demo3';
-    },
     route: '/handle/demo3'
   },
   {
     name: '功能4',
     id: 'menu-4',
     icon: <FilterOutlined />,
-    content: () => {
-      return 'demo4';
-    },
     route: '/handle/demo4'
   },
   {
     name: '功能5',
     id: 'menu-5',
-    icon: <ReconciliationOutlined />,
-    content: () => {
-      return '功能5';
-    }
+    icon: <ReconciliationOutlined />
   },
   {
     name: '功能6',
     id: 'menu-6',
-    icon: <WifiOutlined />,
-    content: () => {
-      return '功能6';
-    }
+    icon: <WifiOutlined />
   }
 ];
 export const MenuFootList = [
@@ -74,25 +56,16 @@ export const MenuFootList = [
     name: '功能7',
     id: 'menu-7',
     icon: <HomeOutlined />,
-    closable: false,
-    content: () => {
-      return '功能7';
-    }
+    closable: false
   },
   {
     name: '功能8',
     id: 'menu-9',
-    icon: <UsergroupDeleteOutlined />,
-    content: () => {
-      return '功能8';
-    }
+    icon: <UsergroupDeleteOutlined />
   },
   {
     name: '功能9',
     id: 'menu-8',
-    icon: <QrcodeOutlined />,
-    content: () => {
-      return '功能9';
-    }
+    icon: <QrcodeOutlined />
   }
 ];
