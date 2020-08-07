@@ -5,7 +5,11 @@
  */
 
 import axios from 'axios';
-
+if (environment === 'dev') {
+  Object.keys(jwtToken).map(item => {
+    axios.defaults.headers.common[item] = jwtToken[item];
+  });
+}
 const axiosHttp = axios.create({
   timeout: 5000
 });

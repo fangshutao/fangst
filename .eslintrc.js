@@ -9,7 +9,8 @@ module.exports = {
   },
   globals: {
     environment: 'readonly', // Specifying Globals
-    publicPath: 'readonly'
+    publicPath: 'readonly',
+    jwtToken: 'readonly'
   },
   plugins: ['babel', 'react'], // Prettier will be automatically injected by plugin:prettier/recommended
   settings: {

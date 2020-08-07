@@ -8,7 +8,7 @@ import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router';
 import './index.less';
-import { getOrgInfoByOrgCode, getApiMock } from '@/services/global';
+import { getOrgInfoByOrgCode, getApiMock, getCurrentUser } from '@/services/global';
 function Index() {
   const dispatch = useDispatch();
   const history = useHistory();
@@ -24,6 +24,9 @@ function Index() {
       }, 2000);
     });
     getApiMock().then(data => {});
+    getCurrentUser().then(data => {
+      console.log(data);
+    });
   }, []);
   const onHEvent = () => {
     history.push('/handle');

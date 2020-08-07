@@ -12,7 +12,7 @@ const plugins = require('./common/plugins');
 // 简化了HTML文件的创建，以便为你的webpack包提供服务
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const baseEntry = path.resolve(__dirname, '../src/main.js');
-const { publicPath } = require('./env/commonEnv');
+const globalVariable = require('./env/commonEnv');
 module.exports = () => {
   return {
     mode: process.env.NODE_ENV === 'dev' ? 'development' : 'production', // 配置webpack构建模式(development production)
@@ -28,7 +28,7 @@ module.exports = () => {
       path: path.resolve(__dirname, '../dist'),
       filename: './static/js/[name]_[hash:16].js',
       chunkFilename: './static/js/chunk/chunk-[name]-[id].[chunkhash:8].bundle.js',
-      publicPath: JSON.parse(publicPath)
+      publicPath: JSON.parse(globalVariable.publicPath)
     }, // 输出构建
     // module 关于模块配置
     module: {
