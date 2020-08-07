@@ -21,7 +21,7 @@ export const MenuList = [
     id: 'menu-1',
     icon: <PieChartOutlined />,
     content: () => {
-      return '功能1';
+      return 'demo1';
     },
     route: '/handle/demo1'
   },
@@ -30,7 +30,7 @@ export const MenuList = [
     id: 'menu-2',
     icon: <AppstoreAddOutlined />,
     content: () => {
-      return '功能2';
+      return 'demo2';
     },
     route: '/handle/demo2'
   },
@@ -39,7 +39,7 @@ export const MenuList = [
     id: 'menu-3',
     icon: <DatabaseOutlined />,
     content: () => {
-      return '功能3';
+      return 'demo3';
     },
     route: '/handle/demo3'
   },
@@ -48,8 +48,9 @@ export const MenuList = [
     id: 'menu-4',
     icon: <FilterOutlined />,
     content: () => {
-      return '功能4';
-    }
+      return 'demo4';
+    },
+    route: '/handle/demo4'
   },
   {
     name: '功能5',
