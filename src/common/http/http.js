@@ -3,8 +3,10 @@
  * Created by weiChow on 2020/06/30
  * http
  */
-
+import React from 'react';
 import axios from 'axios';
+import { ExclamationCircleOutlined } from '@ant-design/icons';
+import { Modal } from 'antd';
 if (environment === 'dev') {
   Object.keys(jwtToken).map(item => {
     axios.defaults.headers.common[item] = jwtToken[item];
@@ -32,7 +34,18 @@ axiosHttp.interceptors.response.use(
           console.log('错误请求');
           break;
         case 401:
-          console.log('未授权，请重新登录');
+          if (environment === 'pro') {
+            Modal.confirm({
+              title: '警告',
+              icon: <ExclamationCircleOutlined />,
+              content: '登录过期，是否重新登录？',
+              okText: '确认',
+              onOk: () => {
+                window.location.href = `/founder-identifywz/v0.1/userView/login?url=${window.location.origin}`;
+              },
+              cancelText: '取消'
+            });
+          }
           break;
         case 403:
           console.log('拒绝访问');

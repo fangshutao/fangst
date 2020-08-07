@@ -24,8 +24,15 @@ export const getApiMock = () => {
 };
 
 export const getCurrentUser = () => {
-  return http('http://192.168.1.38:8000/founder-demowz/v0.1/user/user', {
+  return http('/founder-demowz/v0.1/user/user', {
     method: 'get',
     data: { id: 1 }
+  });
+};
+
+export const getTest = () => {
+  return http('/founder-demo-web/v0.1/user/test', {
+    method: 'get',
+    data: { id: 123 }
   });
 };
