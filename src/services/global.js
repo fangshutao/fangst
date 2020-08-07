@@ -5,7 +5,7 @@
  */
 
 import { http } from '@/common/http/http';
-
+import { proServerName } from '@/config/systemConfig';
 /**
  * 通过组织机构代码获取组织机构信息
  * @returns {Promise}
@@ -24,14 +24,14 @@ export const getApiMock = () => {
 };
 
 export const getCurrentUser = () => {
-  return http('/founder-demowz/v0.1/user/user', {
+  return http(`${httpUrl}${proServerName}/v0.1/user/user`, {
     method: 'get',
     data: { id: 1 }
   });
 };
 
 export const getTest = () => {
-  return http('/founder-demo-web/v0.1/user/test', {
+  return http(`${httpUrl}${proServerName}/v0.1/user/test`, {
     method: 'get',
     data: { id: 123 }
   });

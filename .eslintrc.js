@@ -8,9 +8,10 @@ module.exports = {
     es6: true
   },
   globals: {
-    environment: 'readonly', // Specifying Globals
-    publicPath: 'readonly',
-    jwtToken: 'readonly'
+    environment: 'readonly', // 框架模式类型
+    publicPath: 'readonly', // 配置多级目录访问地址
+    jwtToken: 'readonly', // 开发模块下的token传递，模拟登录用到的变量
+    httpUrl: 'readonly' // 请求地址（ip+端口）
   },
   plugins: ['babel', 'react'], // Prettier will be automatically injected by plugin:prettier/recommended
   settings: {

@@ -23,7 +23,9 @@ function Index() {
         });
       }, 2000);
     });
-    getApiMock().then(data => {});
+    getApiMock().then(data => {
+      console.log(data);
+    });
     getCurrentUser().then(data => {
       console.log(data);
     });

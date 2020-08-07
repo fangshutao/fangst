@@ -5,5 +5,6 @@
  */
 
 module.exports = {
-  environment: JSON.stringify('prod')
+  environment: JSON.stringify('prod'), // 打包模式
+  httpUrl: JSON.stringify('/') // 打包模式下的请求地址（ip+端口）
 };

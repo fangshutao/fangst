@@ -99,7 +99,8 @@ const enforceService = () => {
 const mockLogin = () => {
   request(
     {
-      url: `${globalVariable.simulationHttpUrl}?userId=${globalVariable.simulationUserId}&pwd=${globalVariable.simulationPwd}`
+      url: `${globalVariable.simulationHttpUrl}?userId=${globalVariable.simulationUserId}&pwd=${globalVariable.simulationPwd}`,
+      timeout: 4000
     },
     (error, response, body) => {
       if (!error && response.statusCode === 200) {
