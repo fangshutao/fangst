@@ -83,6 +83,9 @@
     "postcss-loader": "^3.0.0",
     "prettier": "^2.0.5",
     "style-loader": "^1.2.1",
+    "stylelint": "^10.0.1",
+    "stylelint-config-prettier": "^5.1.0",
+    "stylelint-config-standard": "^18.3.0",
     "uglifyjs-webpack-plugin": "^2.2.0",
     "url-loader": "^4.1.0",
     "webpack": "^4.43.0",
@@ -90,7 +93,8 @@
     "webpack-cli": "^3.3.12",
     "webpack-dev-middleware": "^3.7.2",
     "webpack-hot-middleware": "^2.25.0",
-    "webpack-merge": "^4.2.2"
+    "webpack-merge": "^4.2.2",
+    "webpackbar": "^4.0.0"
   },
   "scripts": {
     "dev": "cross-env NODE_ENV=dev node webpack.config/server.js",

@@ -4,6 +4,7 @@ const os = require('os');
 const open = require('open');
 const express = require('express');
 const webpack = require('webpack');
+const WebpackBar = require('webpackbar');
 const request = require('request');
 const webpackDevMiddleware = require('webpack-dev-middleware');
 const webpackHotMiddleware = require('webpack-hot-middleware');
@@ -16,7 +17,8 @@ const app = express();
 const enforceService = () => {
   const config = require('./webpack.dev.js');
   const compiler = webpack(config);
-  compiler.apply(new webpack.ProgressPlugin()); // 进度显示
+  // compiler.apply(new webpack.ProgressPlugin()); // 进度百分比显示
+  compiler.apply(new WebpackBar()); // 进度条显示
   const publicPathName = JSON.parse(globalVariable.publicPath);
   /**
    * 获取本机IP
