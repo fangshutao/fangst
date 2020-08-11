@@ -11,9 +11,10 @@ import { proServerName } from '@/config/systemConfig';
  * @returns {Promise}
  */
 export function getOrgInfoByOrgCode(data) {
-  return http('http://171.220.244.49:8883/metaData/getOrgInfoByOrgCode', {
+  return http('http://116.63.136.105:4000/sys/getProTeam', {
     method: 'get',
-    data
+    data,
+    isCancel: true // 是否包含有取消操作
   });
 }
 

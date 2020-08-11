@@ -36,14 +36,6 @@ axiosHttp.interceptors.response.use(
 );
 
 /**
- * 取消请求源
- */
-export const cancelSource = () => {
-  const { token, cancel } = axios.CancelToken.source();
-  return { cancelToken: token, cancel };
-};
-
-/**
  * 获取复杂请求配置
  * @param options
  */
@@ -88,17 +80,21 @@ function getRequestHeaders(options) {
  */
 const get = (url, option) => {
   const promise = new Promise((resolve, reject) => {
-    axiosHttp
-      .get(url, option)
-      .then(response => {
+    axiosHttp.get(url, option).then(
+      response => {
         resolve(response.data);
-      })
-      .catch(err => {
-        reject(err);
-      });
+      },
+      err => {
+        if (err) {
+          console.error('err', err);
+          reject(err);
+        }
+      }
+    );
   });
-  // eslint-disable-next-line no-proto
-  promise.__proto__.cancel = option.cancel;
+  if (option.isCancel) {
+    return { promise: promise, cancel: option.cancel };
+  }
   return promise;
 };
 /**
@@ -111,12 +107,16 @@ const post = (url, option) => {
         resolve(response.data);
       },
       err => {
-        reject(err);
+        if (err) {
+          console.error('err', err);
+          reject(err);
+        }
       }
     );
   });
-  // eslint-disable-next-line no-proto
-  promise.__proto__.cancel = option.cancel;
+  if (option.isCancel) {
+    return { promise: promise, cancel: option.cancel };
+  }
   return promise;
 };
 /**
@@ -129,12 +129,16 @@ const patch = (url, option) => {
         resolve(response.data);
       },
       err => {
-        reject(err);
+        if (err) {
+          console.error('err', err);
+          reject(err);
+        }
       }
     );
   });
-  // eslint-disable-next-line no-proto
-  promise.__proto__.cancel = option.cancel;
+  if (option.isCancel) {
+    return { promise: promise, cancel: option.cancel };
+  }
   return promise;
 };
 
@@ -148,20 +152,31 @@ const put = (url, option) => {
         resolve(response.data);
       },
       err => {
-        reject(err);
+        if (err) {
+          console.error('err', err);
+          reject(err);
+        }
       }
     );
   });
-  // eslint-disable-next-line no-proto
-  promise.__proto__.cancel = option.cancel;
+  if (option.isCancel) {
+    return { promise: promise, cancel: option.cancel };
+  }
   return promise;
+};
+/**
+ * 取消请求源
+ */
+export const cancelSource = () => {
+  const { token, cancel } = axios.CancelToken.source();
+  return { token, cancel };
 };
 /**
  * 请求
  */
 export const http = (url, options) => {
-  const { cancelToken, cancel } = cancelSource();
-  options.cancelToken = cancelToken;
+  const { token, cancel } = cancelSource();
+  options.cancelToken = token;
   options.cancel = cancel;
   switch (options.method) {
     case 'get':

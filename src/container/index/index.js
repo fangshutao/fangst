@@ -3,17 +3,19 @@
  * Created by weiChow on 2020/06/30.
  * 首页
  */
-
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router';
 import './index.less';
-import { getOrgInfoByOrgCode, getApiMock, getCurrentUser } from '@/services/global';
-function Index() {
+import { getOrgInfoByOrgCode, getApiMock } from '@/services/global';
+const Index = () => {
+  let [mockHttp] = [''];
   const dispatch = useDispatch();
   const history = useHistory();
   useEffect(() => {
-    getOrgInfoByOrgCode({ orgCode: '510100000000' }).then(result => {
+    mockHttp = getOrgInfoByOrgCode();
+    mockHttp.promise.then(result => {
+      console.log(result);
       setTimeout(() => {
         dispatch({
           type: 'global/setSystemReady'
@@ -26,9 +28,10 @@ function Index() {
     getApiMock().then(data => {
       console.log(data);
     });
-    getCurrentUser().then(data => {
-      console.log(data);
-    });
+    return () => {
+      mockHttp.cancel();
+      console.log('组件卸载');
+    };
   }, []);
   const onHEvent = () => {
     history.push('/handle');
@@ -41,5 +44,5 @@ function Index() {
       </h1>
     </main>
   );
-}
+};
 export default Index;

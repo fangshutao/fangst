@@ -4,7 +4,7 @@
  * 公共配置
  */
 const globalVariable = {
-  publicPath: JSON.stringify('/zangzangge/'), // 配置多级目录访问地址
+  publicPath: JSON.stringify('/test/'), // 配置多级目录访问地址
   jwtToken: JSON.stringify(''), // 开发模块下的token传递，模拟登录用到的变量
   simulationUserId: 'wenzhang_cd', // （开发模式）
   simulationPwd: '123456', // （开发模式）
