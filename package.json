@@ -90,7 +90,8 @@
     "webpack-cli": "^3.3.12",
     "webpack-dev-middleware": "^3.7.2",
     "webpack-hot-middleware": "^2.25.0",
-    "webpack-merge": "^4.2.2"
+    "webpack-merge": "^4.2.2",
+    "webpackbar": "^4.0.0"
   },
   "scripts": {
     "dev": "cross-env NODE_ENV=dev node webpack.config/server.js",
