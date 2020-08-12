@@ -6,7 +6,7 @@
 
 ---
 
-### 简介:~~~~
+### 简介:
 
    本项目运用前端技术为：html、css、less、javaScript、react、react-router、
 redux、react-redux、redux-saga、axios、antd、js-base64、react-router-config
@@ -24,9 +24,9 @@ redux、react-redux、redux-saga、axios、antd、js-base64、react-router-confi
 
 ---
 
-### vscode `eslint插件（2.1.8）`、`stylelint插件(0.84.0)`编辑~~~~器配置
+### vscode `eslint插件（2.1.8）`、`stylelint插件(0.84.0)`编辑器配置
 
-```mermaid
+```
 {
     "eslint.enable": true,
     "eslint.autoFixOnSave": true,
