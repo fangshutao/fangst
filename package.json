@@ -99,8 +99,9 @@
   "scripts": {
     "dev": "cross-env NODE_ENV=dev node webpack.config/server.js",
     "build": "cross-env NODE_ENV=prod webpack --config webpack.config/webpack.prod.js --progress --color",
-    "lint": "eslint --fix './src/**/*.{js,json}'",
-    "fix": "prettier --write ./src"
+    "lint:js": "eslint --fix './src/**/*.{js,json}'",
+    "lint:style": "stylelint --fix \"src/**/*.less\" --syntax less",
+    "fix": "prettier --write \"src/**/*.js\" && prettier \"src/**/*.less\" --write && stylelint \"src/**/*.less\" --fix --syntax less"
   },
   "husky": {
     "hooks": {
@@ -108,10 +109,17 @@
     }
   },
   "lint-staged": {
-    "*{.js}": [
+    "*.css": [
+      "stylelint --fix",
+      "prettier --write"
+    ],
+    "*.less": [
+      "stylelint --fix --syntax less",
+      "prettier --write"
+    ],
+    "*.{js,jsx}": [
       "eslint --fix './src/**/*.{js,json}'",
-      "prettier --write ./src",
-      "git add"
+      "prettier --write ./src"
     ]
   }
 }
