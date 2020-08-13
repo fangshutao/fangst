@@ -7,6 +7,7 @@ import { composeWithDevTools } from 'redux-devtools-extension'; // devtools
 import { createStore, applyMiddleware, combineReducers } from 'redux'; // Redux
 import createSagaMiddleware from 'redux-saga';
 import * as sagaEffects from 'redux-saga/effects';
+import { initStore } from './store'; // 创建可用于js中的store
 
 export default function registerStore() {
   const [
@@ -40,6 +41,7 @@ export default function registerStore() {
     const createReducer = createReducers(); // 创建Reducers对象集合
     const store = create(createReducer); // 创建Store
     sagaMiddleware.run(createEffects()); // 启动saga
+    initStore(store); // 创建可用于js中的store
     return store;
   }
 
