@@ -87,8 +87,8 @@
     "postcss-loader": "^3.0.0",
     "prettier": "^2.0.5",
     "style-loader": "^1.2.1",
-    "stylelint": "^10.0.1",
-    "stylelint-config-prettier": "^5.1.0",
+    "stylelint": "^10.1.0",
+    "stylelint-config-prettier": "^5.3.0",
     "stylelint-config-standard": "^18.3.0",
     "uglifyjs-webpack-plugin": "^2.2.0",
     "url-loader": "^4.1.0",
@@ -103,8 +103,9 @@
   "scripts": {
     "dev": "cross-env NODE_ENV=dev node webpack.config/server.js",
     "build": "cross-env NODE_ENV=prod webpack --config webpack.config/webpack.prod.js --progress --color",
-    "lint": "eslint --fix './src/**/*.{js,json}'",
-    "fix": "prettier --write ./src"
+    "lint:js": "eslint --fix './src/**/*.{js,json}'",
+    "lint:style": "stylelint --fix \"src/**/*.less\" --syntax less",
+    "fix": "prettier --write \"src/**/*.js\" && prettier \"src/**/*.less\" --write && stylelint \"src/**/*.less\" --fix --syntax less"
   },
   "husky": {
     "hooks": {
@@ -112,10 +113,17 @@
     }
   },
   "lint-staged": {
-    "*{.js}": [
+    "*.css": [
+      "stylelint --fix",
+      "prettier --write"
+    ],
+    "*.less": [
+      "stylelint --fix --syntax less",
+      "prettier --write"
+    ],
+    "*.{js,jsx}": [
       "eslint --fix './src/**/*.{js,json}'",
-      "prettier --write ./src",
-      "git add"
+      "prettier --write ./src"
     ]
   }
 }
