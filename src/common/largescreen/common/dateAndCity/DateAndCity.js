@@ -3,7 +3,7 @@
  * 绿色家园时间和行政区选择组件类
  */
 import { connect } from 'react-redux';
-import DisplayFeature from '@/largescreen/common/component/basic/DisplayFeature';
+import { DisplayFeature } from '@/common/largescreen/basic';
 import initRedux from './DateAndCityRedux';
 import Component from './DateAndCityComponent';
 

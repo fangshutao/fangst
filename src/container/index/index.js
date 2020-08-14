@@ -21,8 +21,7 @@ const Index = () => {
           type: 'global/setSystemReady'
         });
         dispatch({
-          type: 'demoModel/setCount',
-          payload: 2
+          type: 'demoModel/setCount'
         });
       }, 2000);
     });

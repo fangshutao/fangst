@@ -1,6 +1,7 @@
 'use strict';
 
 import _ from 'lodash';
+// import produce from 'immer';
 
 const nameSpace = 'echartsMap';
 
@@ -80,7 +81,7 @@ const generateReducers = () => {
       return { ...state, ...action.payload };
     },
     refresh: (state, action) => {
-      return { ..._.cloneDeep(state), ...action.payload };
+      return { ...state, ...action.payload };
     }
   };
 };

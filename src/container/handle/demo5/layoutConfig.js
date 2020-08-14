@@ -1,8 +1,8 @@
 /**
- * Created by fangst on 2020/07/17.
+ * Created by fangst on 2020/08/13.
  * Demo配置数据
  */
-import { FantasyContainer, LogoHeader, CommonPicture, EchartsMap, DateAndCity } from '@/largescreen/common/component';
+import { FantasyContainer, LogoHeader, CommonPicture, EchartsMap, DateAndCity } from '@/common/largescreen/common';
 import { getHeaderTitleData, getBigScreenData, getDateAndCityData } from '@/services/demo5/demo5';
 import chartsConfig from './chartsConfig';
 import './index.less';

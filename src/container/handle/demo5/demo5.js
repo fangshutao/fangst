@@ -5,7 +5,7 @@
  */
 import React from 'react';
 import { Layout } from 'antd';
-import { ComponentBuilder } from '@/largescreen/common/component';
+import { ComponentBuilder } from '@/common/largescreen/basic';
 import layoutConfig from './layoutConfig';
 import projectConfig from './projectConfig';
 

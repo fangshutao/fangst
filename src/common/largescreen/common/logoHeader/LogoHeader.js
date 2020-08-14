@@ -3,7 +3,7 @@
  * 顶部Logo组件类
  */
 import { connect } from 'react-redux';
-import DisplayFeature from '@/largescreen/common/component/basic/DisplayFeature';
+import { DisplayFeature } from '@/common/largescreen/basic';
 import initRedux from './LogoHeaderRedux';
 import Component from './LogoHeaderComponent';
 

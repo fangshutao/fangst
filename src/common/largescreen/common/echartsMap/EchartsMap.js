@@ -3,7 +3,7 @@
  * Echarts地图组件类
  */
 import { connect } from 'react-redux';
-import DisplayFeature from '../basic/DisplayFeature';
+import { DisplayFeature } from '@/common/largescreen/basic';
 import initRedux from './EchartsMapRedux';
 import Component from './EchartsMapComponent';
 
