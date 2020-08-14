@@ -29,6 +29,7 @@ export default function registerStore() {
       );
       return app;
     },
+    registerDynamicModule,
     run
   };
   return app;
@@ -39,6 +40,7 @@ export default function registerStore() {
   function run() {
     const createReducer = createReducers(); // 创建Reducers对象集合
     const store = create(createReducer); // 创建Store
+    app.store = store;
     sagaMiddleware.run(createEffects()); // 启动saga
     return store;
   }
@@ -49,6 +51,12 @@ export default function registerStore() {
    */
   function create(appReducer) {
     return createStore(combineReducers(appReducer), composeWithDevTools(applyMiddleware(sagaMiddleware)));
+  }
+
+  function registerDynamicModule() {
+    const newReducers = createReducers(); // 获取新的Reducers对象集合
+    app.store.replaceReducer(combineReducers(newReducers)); // 动态合并reducer
+    sagaMiddleware.run(createEffects());
   }
 
   /**
@@ -96,7 +104,7 @@ export default function registerStore() {
           ...Object.keys(effects).map(effectKey => {
             return function* () {
               try {
-                const action = yield sagaEffects.take(`${nameSpace}${NAMESPACE_SEP}${effectKey}`);
+                const action = yield sagaEffects.takeEvery(`${nameSpace}${NAMESPACE_SEP}${effectKey}`);
                 yield* effects[effectKey](action, sagaEffects);
               } catch (e) {
                 console.log(e);

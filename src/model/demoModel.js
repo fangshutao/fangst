@@ -13,6 +13,7 @@ export default {
 
   effects: {
     *setCount(action, { put, call }) {
+      alert(action.payload);
       yield put({
         type: 'demoModel/getCount',
         payload: {

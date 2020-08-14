@@ -26,9 +26,8 @@ if (title) {
 
 // 创建store
 const context = require.context('@/model', true, /\.js$/);
-const store = registerStore()
-  .useModel(context.keys().map(key => context(key).default))
-  .run();
+const storeRegister = registerStore();
+const store = storeRegister.useModel(context.keys().map(key => context(key).default)).run();
 
 const rootContainer = (
   <Provider store={store}>
@@ -39,3 +38,5 @@ const rootContainer = (
 );
 
 ReactDOM.render(rootContainer, document.getElementById('root'));
+
+export { storeRegister };
