@@ -9,7 +9,7 @@ import { useHistory } from 'react-router';
 import './index.less';
 import { getOrgInfoByOrgCode, getApiMock } from '@/services/global';
 const Index = () => {
-  let [mockHttp] = [''];
+  let [mockHttp] = ['1'];
   const dispatch = useDispatch();
   const history = useHistory();
   useEffect(() => {

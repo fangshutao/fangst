@@ -103,7 +103,7 @@
   "scripts": {
     "dev": "cross-env NODE_ENV=dev node webpack.config/server.js",
     "build": "cross-env NODE_ENV=prod webpack --config webpack.config/webpack.prod.js --progress --color",
-    "lint:js": "eslint --fix './src/**/*.{js,json}'",
+    "lint:js": "eslint --fix './src/**/*.js'",
     "lint:style": "stylelint --fix \"src/**/*.less\" --syntax less",
     "fix": "prettier --write \"src/**/*.js\" && prettier \"src/**/*.less\" --write && stylelint \"src/**/*.less\" --fix --syntax less"
   },
@@ -122,7 +122,7 @@
       "prettier --write"
     ],
     "*.{js,jsx}": [
-      "eslint --fix './src/**/*.{js,json}'",
+      "eslint --fix './src/**/*.js'",
       "prettier --write ./src"
     ]
   }
