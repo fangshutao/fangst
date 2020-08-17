@@ -28,7 +28,7 @@ module.exports = () => {
       path: path.resolve(__dirname, '../dist'),
       filename: './static/js/[name]_[hash:16].js',
       chunkFilename: './static/js/chunk/chunk-[name]-[id].[chunkhash:8].bundle.js',
-      publicPath: JSON.parse(globalVariable.publicPath)
+      publicPath: process.env.NODE_ENV === 'local' ? './' : JSON.parse(globalVariable.publicPath)
     }, // 输出构建
     // module 关于模块配置
     module: {

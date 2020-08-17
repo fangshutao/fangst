@@ -63,8 +63,8 @@ module.exports = () => [
         loader: 'url-loader', // url-loader(可进行构建配置)作用与file-loader相同 内部使用file-loader
         options: {
           limit: 3072,
-          name: '[name]_[hash:8].[ext]',
-          outputPath: './static/images'
+          name: process.env.NODE_ENV === 'local' ? '[name].[ext]' : '[name]_[hash:8].[ext]',
+          outputPath: process.env.NODE_ENV === 'local' ? '../../static/images' : './static/images'
         }
       }
     ]
@@ -77,8 +77,8 @@ module.exports = () => [
         loader: 'url-loader', // url-loader(可进行构建配置)作用与file-loader相同 内部使用file-loader
         options: {
           limit: 3072,
-          name: '[name]_[hash:8].[ext]',
-          outputPath: './static/fonts'
+          name: process.env.NODE_ENV === 'local' ? '[name].[ext]' : '[name]_[hash:8].[ext]',
+          outputPath: process.env.NODE_ENV === 'local' ? '../../static/fonts' : './static/fonts'
         }
       }
     ]
@@ -92,8 +92,8 @@ module.exports = () => [
         loader: 'url-loader', // url-loader(可进行构建配置)作用与file-loader相同 内部使用file-loader
         options: {
           limit: 30720,
-          name: '[name]_[hash:8].[ext]',
-          outputPath: './static/data'
+          name: process.env.NODE_ENV === 'local' ? '[name].[ext]' : '[name]_[hash:8].[ext]',
+          outputPath: process.env.NODE_ENV === 'local' ? '../../static/data' : './static/data'
         }
       }
     ]

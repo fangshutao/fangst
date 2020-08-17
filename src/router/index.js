@@ -7,7 +7,7 @@
 
 import React from 'react';
 import { Switch } from 'react-router';
-import { BrowserRouter } from 'react-router-dom';
+import { BrowserRouter, HashRouter } from 'react-router-dom';
 import { renderRoutes } from 'react-router-config';
 import asyncComponent from '@/common/tool/asyncComponent'; // 异步加载
 import router from './handle/router'; // 路由
@@ -20,9 +20,15 @@ const indexRoute = {
 };
 const routes = [indexRoute, ...router]; // 路由合并
 const RouterComponent = () => <Switch>{renderRoutes(routes)}</Switch>;
-const RootRouter = () => (
-  <BrowserRouter basename={publicPath || '/'}>
-    <RouterComponent />
-  </BrowserRouter>
-);
+const RootRouter = () =>
+  environment === 'local' ? (
+    <HashRouter>
+      <RouterComponent />
+    </HashRouter>
+  ) : (
+    <BrowserRouter basename={publicPath || '/'}>
+      <RouterComponent />
+    </BrowserRouter>
+  );
+
 export default RootRouter;
