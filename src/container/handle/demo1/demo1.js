@@ -3,7 +3,8 @@ import { getApiMock } from '@/services/global';
 let mockHttp = '';
 const Demo1 = () => {
   useEffect(() => {
-    mockHttp = getApiMock().then(data => {
+    mockHttp = getApiMock();
+    mockHttp.promise.then(data => {
       console.log(data);
     });
     return () => {

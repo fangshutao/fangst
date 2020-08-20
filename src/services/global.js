@@ -20,7 +20,8 @@ export function getOrgInfoByOrgCode(data) {
 
 export const getApiMock = () => {
   return http('/api/global', {
-    method: 'get'
+    method: 'get',
+    isCancel: true // 是否包含有取消操作
   });
 };
 

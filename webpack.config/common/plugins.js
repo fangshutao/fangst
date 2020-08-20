@@ -24,7 +24,10 @@ module.exports = () => {
           noErrorOnMissing: true // Doesn't generate an error on missing file(s).
         },
         {
-          from: path.join(__dirname, `../../src/config/system.${process.env.NODE_ENV}.config.js`),
+          from: path.join(
+            __dirname,
+            `../../src/config/system.${process.env.NODE_ENV === 'local' ? 'prod' : process.env.NODE_ENV}.config.js`
+          ),
           to: './config/systemConfig.js'
         }
       ],

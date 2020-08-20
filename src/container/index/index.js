@@ -25,7 +25,8 @@ const Index = () => {
         });
       }, 2000);
     });
-    getApiMock().then(data => {
+    const apiMock = getApiMock();
+    apiMock.promise.then(data => {
       console.log(data);
     });
     return () => {
