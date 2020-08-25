@@ -35,6 +35,11 @@ const Router = [
     name: 'demo5',
     path: '/demo5',
     component: asyncComponent(() => import('@/container/handle/demo5/demo5'))
+  },
+  {
+    name: 'demo6',
+    path: '/demo6',
+    component: asyncComponent(() => import('@/container/handle/demo6/demo6'))
   }
 ];
 
