@@ -85,9 +85,9 @@ const enforceService = () => {
         `http://${getIPAddress()}:${port}${publicPathName}`
       ];
       console.log('app listening on the following address:');
-      console.log(`${address[0]}!`);
-      console.log(`${address[1]}!`);
-      console.log('The Web browser will open automatically after 5 seconds . . .');
+      console.log('\x1b[96m', `${address[0]}`);
+      console.log('\x1b[95m', `${address[1]}`);
+      console.log('\x1b[94m', 'The Web browser will open automatically after 5 seconds . . .');
       console.log('Please wait while building . . .');
       open(address[1], { wait: true });
     });
